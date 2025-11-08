@@ -1,127 +1,123 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { MessageCircle, Rocket, Phone, Mail, MapPin } from "lucide-react";
+import Tilt from "react-parallax-tilt";
+import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 
 const Contact = () => {
   const whatsappLink = "https://wa.me/5517992647180";
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
+    <section id="contact" className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-secondary/10" />
+      
+      <motion.div
+        className="absolute inset-0"
+        animate={{
+          background: [
+            "radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.15) 0%, transparent 50%)",
+            "radial-gradient(circle at 80% 50%, hsl(var(--secondary) / 0.15) 0%, transparent 50%)",
+            "radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.15) 0%, transparent 50%)",
+          ],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto text-center"
         >
-          <div className="glass-effect p-8 md:p-12 rounded-3xl text-center">
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", duration: 0.6 }}
-              className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center glow-effect"
-            >
-              <Rocket className="w-10 h-10 text-primary-foreground" />
-            </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-bold font-orbitron mb-6"
+          >
+            Sua empresa pode atender{" "}
+            <span className="text-gradient">24h por dia</span>
+          </motion.h2>
 
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              🚀 Não perca esta <span className="text-gradient">oportunidade</span>
-            </h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-foreground/80 mb-4 font-poppins"
+          >
+            Gerar mais resultados e ainda reduzir custos.
+          </motion.p>
 
-            <p className="text-xl md:text-2xl text-foreground mb-6">
-              de alavancar a sua empresa, diminuindo custos e aumentando o lucro!
-            </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="text-lg text-foreground/70 mb-12 font-poppins"
+          >
+            A inteligência artificial da Lopes Automações faz isso por você.
+          </motion.p>
 
-            <p className="text-lg text-muted-foreground mb-8">
-              Chame agora e peça seu orçamento personalizado
-            </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, type: "spring" }}
+            className="mb-16"
+          >
+            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.05}>
               <Button
                 size="lg"
                 onClick={() => window.open(whatsappLink, "_blank")}
-                className="text-lg px-10 py-7 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 group mb-8 animate-glow-pulse relative overflow-hidden"
+                className="text-xl px-12 py-8 bg-gradient-to-r from-primary via-accent to-secondary hover:opacity-90 group relative overflow-hidden shadow-2xl font-semibold"
               >
                 <span className="relative z-10 flex items-center">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Falar no WhatsApp
-                  <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                  <MessageCircle className="w-6 h-6 mr-3" />
+                  💬 Fale com a gente agora
                 </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 blur-xl animate-pulse-slow" />
+                <motion.span
+                  className="absolute inset-0 bg-gradient-to-r from-primary/60 via-accent/60 to-secondary/60 blur-2xl"
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
               </Button>
-            </motion.div>
+            </Tilt>
+          </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-6 text-left">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Phone, label: "Telefone", value: "+55 17 99264-7180", color: "primary" },
+              { icon: Mail, label: "E-mail", value: "contato@lopesautomacoes.com.br", color: "accent" },
+              { icon: MapPin, label: "Localização", value: "São Paulo, Brasil", color: "secondary" },
+            ].map((contact, index) => (
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="flex items-start gap-3"
-              >
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="font-semibold mb-1">Telefone</p>
-                  <p className="text-sm text-muted-foreground">+55 17 99264-7180</p>
-                </div>
-              </motion.div>
-
-              <motion.div
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="flex items-start gap-3"
+                transition={{ delay: 0.5 + index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="glass-card p-6 rounded-xl"
               >
-                <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-secondary" />
+                <div className={`w-12 h-12 mx-auto mb-4 rounded-lg bg-${contact.color}/20 flex items-center justify-center`}>
+                  <contact.icon className={`w-6 h-6 text-${contact.color}`} />
                 </div>
-                <div>
-                  <p className="font-semibold mb-1">E-mail</p>
-                  <p className="text-sm text-muted-foreground">contato@lopesautomacoes.com.br</p>
-                </div>
+                <p className="font-semibold mb-2 font-orbitron">{contact.label}</p>
+                <p className="text-sm text-foreground/70 font-poppins">{contact.value}</p>
               </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="flex items-start gap-3"
-              >
-                <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-semibold mb-1">Localização</p>
-                  <p className="text-sm text-muted-foreground">São Paulo, Brasil</p>
-                </div>
-              </motion.div>
-            </div>
+            ))}
           </div>
         </motion.div>
       </div>
