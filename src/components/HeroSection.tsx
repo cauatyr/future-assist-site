@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import ParticlesBackground from "./ParticlesBackground";
 
 const HeroSection = () => {
   const scrollToContact = () => {
@@ -23,6 +24,7 @@ const HeroSection = () => {
             backgroundPosition: "center",
           }}
         />
+        <ParticlesBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
         
         {/* Animated Gradients */}
@@ -104,10 +106,13 @@ const HeroSection = () => {
             <Button
               size="lg"
               onClick={scrollToContact}
-              className="text-lg px-8 py-6 glow-effect bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 group"
+              className="text-lg px-8 py-6 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 group animate-glow-pulse relative overflow-hidden"
             >
-              🚀 Solicitar Orçamento
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              <span className="relative z-10 flex items-center">
+                🚀 Solicitar Orçamento
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 blur-xl animate-pulse-slow" />
             </Button>
             <Button
               size="lg"

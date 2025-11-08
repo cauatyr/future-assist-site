@@ -62,11 +62,14 @@ const Contact = () => {
               <Button
                 size="lg"
                 onClick={() => window.open(whatsappLink, "_blank")}
-                className="text-lg px-10 py-7 glow-effect bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 group mb-8"
+                className="text-lg px-10 py-7 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 group mb-8 animate-glow-pulse relative overflow-hidden"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Falar no WhatsApp
-                <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                <span className="relative z-10 flex items-center">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Falar no WhatsApp
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 blur-xl animate-pulse-slow" />
               </Button>
             </motion.div>
 
