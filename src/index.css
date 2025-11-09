@@ -85,11 +85,31 @@ All colors MUST be HSL.
   }
 
   .glass-effect {
-    @apply bg-card/30 backdrop-blur-xl border border-border/20;
+    backdrop-filter: blur(12px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 25px rgba(108, 99, 255, 0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-effect:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.4);
+    transform: translateY(-4px) scale(1.02);
   }
 
   .glass-card {
-    @apply bg-card/40 backdrop-blur-2xl border border-border/30 shadow-2xl;
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(108, 99, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 48px rgba(0, 255, 255, 0.5);
+    transform: translateY(-6px) scale(1.03);
   }
 
   .glow-effect {
@@ -176,6 +196,37 @@ All colors MUST be HSL.
     opacity: 1;
   }
 
+  .interactive-glow {
+    background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      rgba(0, 255, 255, 0.15), 
+      transparent 50%
+    );
+    transition: background 0.15s ease;
+    mix-blend-mode: screen;
+  }
+
+  .button-shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg, 
+      rgba(255, 255, 255, 0.1), 
+      rgba(255, 255, 255, 0.3), 
+      rgba(255, 255, 255, 0.1)
+    );
+    transform: skewX(-20deg);
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .button-shine:hover::after {
+    left: 130%;
+  }
+
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
@@ -211,6 +262,15 @@ All colors MUST be HSL.
   @media (max-width: 640px) {
     .hero-overlay {
       background: rgba(0, 0, 0, 0.7);
+    }
+    
+    /* Reduzir efeitos em mobile para performance */
+    .interactive-glow {
+      display: none;
+    }
+    
+    canvas#neuralNetwork {
+      opacity: 0.2 !important;
     }
   }
 }

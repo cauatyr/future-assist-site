@@ -9,6 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
 import ScrollProgress from "@/components/ScrollProgress";
+import SectionWrapper from "@/components/SectionWrapper";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -33,10 +34,18 @@ const Index = () => {
           <Navbar />
           <main>
             <HeroSection />
-            <HowItWorks />
-            <Benefits />
-            <About />
-            <Contact />
+            <SectionWrapper>
+              <HowItWorks />
+            </SectionWrapper>
+            <SectionWrapper>
+              <Benefits />
+            </SectionWrapper>
+            <SectionWrapper>
+              <About />
+            </SectionWrapper>
+            <SectionWrapper>
+              <Contact />
+            </SectionWrapper>
           </main>
           <Footer />
         </div>

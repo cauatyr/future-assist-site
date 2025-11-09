@@ -25,6 +25,10 @@ const BackgroundAI = () => {
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       
+      // Pulsação suave - IA respirando
+      const pulse = 0.6 + Math.sin(Date.now() / 800) * 0.3;
+      ctx.globalAlpha = pulse;
+      
       for (let i = 0; i < nodes.length; i++) {
         const n1 = nodes[i];
         n1.x += n1.vx;

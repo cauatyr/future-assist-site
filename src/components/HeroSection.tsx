@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { Button } from "./ui/button";
 import Tilt from "react-parallax-tilt";
 import { TypeAnimation } from "react-type-animation";
@@ -10,6 +11,16 @@ const HeroSection = () => {
     document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Interactive glow effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`);
+      document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`);
+    };
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => document.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
     <section
       id="home"
@@ -18,6 +29,7 @@ const HeroSection = () => {
       {/* Video Background Effect + Neural Network */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0">
+          {/* Parallax Background */}
           <motion.div
             className="absolute inset-0 opacity-60"
             style={{
@@ -25,8 +37,10 @@ const HeroSection = () => {
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-            animate={{
+            initial={{ backgroundPositionY: "0%" }}
+            animate={{ 
               scale: [1, 1.05, 1],
+              backgroundPositionY: ["0%", "10%", "0%"]
             }}
             transition={{
               duration: 20,
@@ -36,6 +50,22 @@ const HeroSection = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
+          
+          {/* Interactive Glow Effect */}
+          <div className="interactive-glow absolute inset-0 pointer-events-none" />
+          
+          {/* Morphing Particles */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            animate={{ 
+              background: [
+                'radial-gradient(circle at 20% 30%, rgba(0,255,255,0.12), transparent 70%)',
+                'radial-gradient(circle at 80% 70%, rgba(108,99,255,0.18), transparent 70%)',
+                'radial-gradient(circle at 50% 50%, rgba(0,255,255,0.12), transparent 70%)'
+              ] 
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
           
           {/* Neural Network Animation */}
           <BackgroundAI />
