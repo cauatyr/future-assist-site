@@ -2,14 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide Lovable badge */
+/* Hide Lovable badge - All possible selectors */
 [data-lovable-badge],
 .lovable-badge,
-a[href*="lovable.app"][href*="edit"] {
+a[href*="lovable.app"][href*="edit"],
+a[href*="lovable.dev"][href*="edit"],
+div[class*="lovable"],
+iframe[src*="lovable"],
+[class*="edit-in-lovable"],
+[id*="lovable-badge"],
+button[class*="lovable"],
+div[data-state][class*="fixed"][class*="bottom"],
+div[style*="z-index: 999"],
+div[style*="z-index: 9999"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
 }
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
